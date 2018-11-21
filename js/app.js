@@ -24,9 +24,10 @@ function getCocktails(e) {
     // Check if something is in the search input
     if (searchTerm === "") {
         // Call user interface print message
-        ui.printMessage();
+        ui.printMessage("Please add something into the form", "danger");
     } else {
-
+        console.log("Query the REST API");
+        
     }
     
 
