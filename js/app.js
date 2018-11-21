@@ -27,18 +27,27 @@ function getCocktails(e) {
         // Call user interface print message
         ui.printMessage("Please add something into the form", "danger");
     } else {
+        // Server response from promise
+        let serverResponse;
+
+        //type of search (ingredients, cocktails, or name)
+        const type = document.querySelector("#type").value;
+        // Evaluate the type of method and then execute the query
+
+        switch(type) {
+            case "name":
+                serverResponse = cocktail.getDrinksByName(searchTerm);
+                break;
+        }
         // Query by the name of the drink
-        cocktail.getDrinksByName(searchTerm)
-         .then(cocktails => {
+         serverResponse.then(cocktails => {
              if (cocktails.cocktails.drinks === null) {
                  // Nothing exists
                  ui.printMessage(`There are no results for ${searchTerm}, try a different term.`, "danger");
              } else {
                  //console.log(cocktails.cocktails.drinks);
                  ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
-                 
              }
-             
          })        
     }
     
