@@ -12,6 +12,11 @@ function eventListeners() {
         searchForm.addEventListener("submit", getCocktails);
     }
     
+    // The results div listeners
+    const resultsDiv = document.querySelector("#results");
+    if (resultsDiv) {
+        resultsDiv.addEventListener("click", resultsDelegation);
+    }
 }
 
 eventListeners();
@@ -61,6 +66,18 @@ function getCocktails(e) {
             }
         })        
     }
-    
+}
 
+function resultsDelegation(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("get-recipe")) {
+        // console.log(e.target.dataset.id);
+        cocktail.getSingleRecipe(e.target.dataset.id)
+        .then(recipe => {
+            // Display single recipe into the modal
+            ui.displaySingleRecipe(recipe.recipe.drinks[0]);
+            
+        });
+        
+    }
 }

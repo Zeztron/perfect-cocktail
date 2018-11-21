@@ -23,4 +23,16 @@ class CocktailAPI {
             cocktails
         }
     }
+
+    // Get single recipe
+    async getSingleRecipe(id) {
+        // Search by ingredient
+        const apiResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+        // Returns a json
+        const recipe = await apiResponse.json();
+
+        return {
+            recipe
+        }
+    }
 }
