@@ -6,6 +6,8 @@ const cocktail = new CocktailAPI();
 
 // Create the Event Listeners
 function eventListeners() {
+    // Document ready
+    document.addEventListener("DOMContentLoaded", documentReady);
     // Search form
     const searchForm = document.querySelector("#search-form");
     if (searchForm) {
@@ -79,5 +81,14 @@ function resultsDelegation(e) {
             
         });
         
+    }
+}
+
+function documentReady() {
+
+    // Select the search category select
+    const searchCategory = document.querySelector(".search-category");
+    if (searchCategory) {
+        ui.displayCategories();
     }
 }

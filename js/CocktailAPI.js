@@ -35,4 +35,15 @@ class CocktailAPI {
             recipe
         }
     }
+
+    // Retrieve all the categories from the REST API
+    async getCategories() {
+        const apiResponse = await fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list");
+        // watch for the response
+        const categories = await apiResponse.json();
+
+        return {
+            categories
+        }
+    }
 }
