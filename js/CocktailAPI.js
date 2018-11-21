@@ -7,6 +7,8 @@ class CocktailAPI {
         // Returns a json response
         const cocktails = await apiResponse.json();
 
+        
+
         return {
             cocktails
         }
