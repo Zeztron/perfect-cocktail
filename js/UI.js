@@ -12,7 +12,7 @@ class UI {
         resultsDiv.innerHTML += `
             <div class="col-md-6">
                 <div class="card my-3">
-                    <img class="card-img-top" src="" alt="">
+                    <img class="card-img-top" src="http://${drink.strDrinkThumb}" alt="${drink.strDrink}">
 
                     <div class="card-body">
                         <h2 class="card-title text-center"></h2>
