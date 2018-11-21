@@ -1,6 +1,9 @@
 .navbar-brand {
     font-size: 1.6rem;
 }
+.icon {
+    color: #C95C53;
+}
 .sitename {
     color:white;
     font-family: 'Raleway', sans-serif;
