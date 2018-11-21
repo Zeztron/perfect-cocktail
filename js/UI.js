@@ -15,6 +15,7 @@ class UI {
             catList.forEach(category => {
                 const option = document.createElement("option");
                 option.textContent = category.strCategory;
+                option.value = category.strCategory.split(" ").join("_");
                 document
                   .querySelector("#search")
                   .appendChild(option);
