@@ -38,17 +38,28 @@ function getCocktails(e) {
             case "name":
                 serverResponse = cocktail.getDrinksByName(searchTerm);
                 break;
+            case "ingredient":
+                serverResponse = cocktail.getDrinksByIngredient(searchTerm);
+                break;
         }
+
+        ui.clearResults();
         // Query by the name of the drink
-         serverResponse.then(cocktails => {
-             if (cocktails.cocktails.drinks === null) {
-                 // Nothing exists
-                 ui.printMessage(`There are no results for ${searchTerm}, try a different term.`, "danger");
-             } else {
-                 //console.log(cocktails.cocktails.drinks);
-                 ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
-             }
-         })        
+        serverResponse.then(cocktails => {
+            if (cocktails.cocktails.drinks === null) {
+                // Nothing exists
+                ui.printMessage(`There are no results for ${searchTerm}, try a different term.`, "danger");
+            } else {
+                //console.log(cocktails.cocktails.drinks);
+                if (type === "name") {
+                    // Display with ingredients
+                    ui.displayDrinksWithIngredients(cocktails.cocktails.drinks);
+                } else {
+                    // Dislay without ingredients (category, alcohol, ingredient)
+                    ui.displayDrinks(cocktails.cocktails.drinks);
+                }
+            }
+        })        
     }
     
 
