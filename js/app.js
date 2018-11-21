@@ -84,9 +84,20 @@ function resultsDelegation(e) {
         .then(recipe => {
             // Display single recipe into the modal
             ui.displaySingleRecipe(recipe.recipe.drinks[0]);
-            
         });
-        
+    }
+
+    // When favorite-btn is clicked
+    if (e.target.classList.contains("favorite-btn")) {
+        if (e.target.classList.contains("is-favorite")) {
+            // Remove the class
+            e.target.classList.remove("is-favorite")
+            e.target.textContent = "+";
+        } else {
+            // Add thre class
+            e.target.classList.add("is-favorite");
+            e.target.textContent = "-";
+        }
     }
 }
 
