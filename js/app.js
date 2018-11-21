@@ -1,6 +1,7 @@
 // Instantiate the classes
 const ui = new UI();
 const cocktail = new CocktailAPI();
+const cocktailDB = new CocktailDB();
 
 
 
@@ -97,11 +98,22 @@ function resultsDelegation(e) {
             // Add thre class
             e.target.classList.add("is-favorite");
             e.target.textContent = "-";
+
+            // Get info
+            const cardBody = e.target.parentElement;
+            const drinkInfo = {
+                id: e.target.dataset.id,
+                name: cardBody.querySelector(".card-title").textContent,
+                image: cardBody.querySelector(".card-img-top").src
+            }
+            //console.log(drinkInfo);
+            // Add into local storage
+            cocktailDB.saveIntoDB(drinkInfo);
         }
     }
 }
 
-function documentReady() {
+function documentReady(drinkInfo) {
 
     // Select the search category select
     const searchCategory = document.querySelector(".search-category");
