@@ -17,7 +17,7 @@ class CocktailDB {
         if (localStorage.getItem("drinks") === null) {
             drinks = [];
         } else {
-            drinks = JSON.parse(localStorage.getItem(drinks));
+            drinks = JSON.parse(localStorage.getItem("drinks"));
         }
         return drinks;
     }

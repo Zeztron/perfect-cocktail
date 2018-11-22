@@ -101,12 +101,13 @@ function resultsDelegation(e) {
 
             // Get info
             const cardBody = e.target.parentElement;
+            
             const drinkInfo = {
                 id: e.target.dataset.id,
                 name: cardBody.querySelector(".card-title").textContent,
                 image: cardBody.querySelector(".card-img-top").src
             }
-            //console.log(drinkInfo);
+            // console.log(drinkInfo);
             // Add into local storage
             cocktailDB.saveIntoDB(drinkInfo);
         }
@@ -119,5 +120,14 @@ function documentReady(drinkInfo) {
     const searchCategory = document.querySelector(".search-category");
     if (searchCategory) {
         ui.displayCategories();
+    }
+
+    // When favorites page is open
+    const favoritesTable = document.querySelector("#favorites");
+    if (favoritesTable) {
+        // Gets the favorites from the storage and display
+        const drinks = cocktailDB.getFromDB();
+        
+        ui.displayFavorites(drinks);
     }
 }

@@ -165,4 +165,28 @@ class UI {
         const resultsDiv = document.querySelector("#results");
         resultsDiv.innerHTML = "";
     }
+
+    // Displays favorites from local storage
+    displayFavorites(favorites) {
+        const favoritesTable = document.querySelector("#favorites tbody");
+        favorites.forEach(drink => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>
+                    <img src="${drink.image}" alt="${drink.name}" width=100>
+                </td>
+                <td>
+                    ${drink.name}
+                </td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#recipe" data-id="${drink.id}"
+                    class="btn btn-success get-recipe">
+                        View
+                    </a>
+                </td>
+            `;
+
+            favoritesTable.appendChild(tr);
+        });
+    }
 }
