@@ -146,6 +146,8 @@ function documentReady(drinkInfo) {
             if (e.target.classList.contains("remove-recipe")) {
                 // Remove from DOM
                 ui.removeFavorite(e.target.parentElement.parentElement);
+                // Remove from LS
+                cocktailDB.removeFromDB(e.target.dataset.id);
             }
         });
     }
