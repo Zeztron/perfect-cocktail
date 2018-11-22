@@ -184,9 +184,19 @@ class UI {
                         View
                     </a>
                 </td>
+                <td>
+                    <a href="#" data-id="${drink.id}" class="btn btn-danger remove-recipe">
+                        Remove
+                    </a>
+                </td>
             `;
 
             favoritesTable.appendChild(tr);
         });
+    }
+
+    // Remove favorites from DOM
+    removeFavorite(e) {
+        e.remove();
     }
 }

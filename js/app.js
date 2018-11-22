@@ -127,7 +127,26 @@ function documentReady(drinkInfo) {
     if (favoritesTable) {
         // Gets the favorites from the storage and display
         const drinks = cocktailDB.getFromDB();
-        
         ui.displayFavorites(drinks);
+
+        // When view or delete are clicked
+        favoritesTable.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Delegation
+            if (e.target.classList.contains("get-recipe")) {
+                cocktail.getSingleRecipe(e.target.dataset.id)
+                    .then(recipe => {
+                        // Display single recipe into the modal
+                        ui.displaySingleRecipe(recipe.recipe.drinks[0]);
+                    });
+            }
+
+            // When remove button is clicked in favorites
+            if (e.target.classList.contains("remove-recipe")) {
+                // Remove from DOM
+                ui.removeFavorite(e.target.parentElement.parentElement);
+            }
+        });
     }
 }
